@@ -1,3 +1,4 @@
+using System;
 using Symphony.TicketService.Models;
 
 namespace Symphony.TicketService.Service
@@ -7,12 +8,12 @@ namespace Symphony.TicketService.Service
         // You'll take it from here!
         public int CalculateTicketPrice(Ticket ticket)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 
     public interface ITicketingService
-    { 
+    {
         int CalculateTicketPrice(Ticket ticket);
     }
 }

@@ -8,30 +8,29 @@ namespace Symphony.TicketService.Storage
     {
         private readonly Dictionary<Type, Dictionary<Guid, Entity>> storage;
 
-        public Repository() => storage = new Dictionary<Type, Dictionary<Guid, Entity>>();
-        
-        public T Get<T>(Guid id) where T : Entity =>
-            storage.ContainsKey(typeof(T))
+        public Repository()
+        {
+            storage = new Dictionary<Type, Dictionary<Guid, Entity>>();
+        }
+
+        public T Get<T>(Guid id) where T : Entity
+        {
+            return storage.ContainsKey(typeof(T))
                 ? storage[typeof(T)][id] as T
                 : throw new KeyNotFoundException();
+        }
 
         public void Add<T>(T entity) where T : Entity
         {
-            if (!storage.ContainsKey(typeof(T)))
-            {
-                storage.Add(typeof(T), new Dictionary<Guid, Entity>());
-            }
-            
+            if (!storage.ContainsKey(typeof(T))) storage.Add(typeof(T), new Dictionary<Guid, Entity>());
+
             storage[typeof(T)].Add(entity.Id, entity);
         }
 
         public Guid Delete<T>(T entity) where T : Entity
         {
-            if (!storage.ContainsKey(typeof(T)))
-            {
-                throw new KeyNotFoundException();
-            }
-            
+            if (!storage.ContainsKey(typeof(T))) throw new KeyNotFoundException();
+
             storage[typeof(T)].Remove(entity.Id);
             return entity.Id;
         }

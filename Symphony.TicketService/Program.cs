@@ -5,15 +5,15 @@ using Symphony.TicketService.Storage;
 
 namespace Symphony.TicketService
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             IRepository repository = new Repository();
-            
+
             var busDriver = new Driver("Nikola", Gender.Male, 51);
             repository.Add(busDriver);
-            
+
             var bus = new Bus("NS 105 XS", "Fiat");
             repository.Add(bus);
 
@@ -25,9 +25,9 @@ namespace Symphony.TicketService
                 "Beograd");
             repository.Add(ride);
 
-            
+
             var ticket = new Ticket(ride.Id, 50);
-            
+
             ITicketingService ticketingService = new TicketingService();
             ticketingService.CalculateTicketPrice(ticket);
         }
