@@ -2,5 +2,16 @@ using System;
 
 namespace Symphony.TicketService.Models
 {
-    public record Ticket (Guid RideId, double Price) : Entity(Guid.NewGuid());
+    public class Ticket : Entity
+    {
+        public double Price { get; set; }
+        
+        public Guid RideId { get; set; }
+        public Ticket(Guid rideId, double price)
+            : base(Guid.NewGuid())
+        {
+            RideId = rideId;
+            Price = price;
+        }
+    };
 }

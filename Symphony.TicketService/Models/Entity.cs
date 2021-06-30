@@ -2,5 +2,14 @@ using System;
 
 namespace Symphony.TicketService.Models
 {
-    public abstract record Entity(Guid Id);
+    public abstract class Entity
+    {
+        public Guid Id { get; set; }
+
+        public Entity(Guid id)
+        {
+            Id = id;
+        }
+    }
+    
 }

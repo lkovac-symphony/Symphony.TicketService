@@ -2,5 +2,18 @@ using System;
 
 namespace Symphony.TicketService.Models
 {
-    public record Driver (string Name, Gender Gender, int Age) : Entity(Guid.NewGuid());
+    public class Driver : Entity
+    {
+        public string Name { get; set; }
+        public Gender Gender { get; set; }
+        public int Age { get; set; }
+        
+        public Driver(string name, Gender gender, int age)
+            : base(Guid.NewGuid())
+        {
+            Name = name;
+            Gender = gender;
+            Age = age;
+        }
+    }
 }
