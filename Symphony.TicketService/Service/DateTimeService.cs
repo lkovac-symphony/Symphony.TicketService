@@ -5,7 +5,7 @@ namespace Symphony.TicketService.Service
     public class DateTimeService : IDateTime
     {
         private static int _counter = 0;
-        private readonly DateTime _birthday = new DateTime(1994, 24, 10);
+        private readonly DateTime _birthday = new DateTime(1994, 10, 24);
         
         public DateTime GetDateTime
         {
