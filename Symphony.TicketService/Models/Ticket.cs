@@ -7,6 +7,7 @@ namespace Symphony.TicketService.Models
         public double Price { get; set; }
         
         public Guid RideId { get; set; }
+        
         public Ticket(Guid rideId, double price)
             : base(Guid.NewGuid())
         {
