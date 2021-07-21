@@ -12,6 +12,14 @@ namespace Symphony.TicketService.Visitor
         {
             _visitors = visitors ?? throw new ArgumentNullException();
         }
+
+        public override (bool applicableDiscount, int discount) Visit(VisitorContext context)
+        {
+            foreach (var visitor in _visitors)
+            {
+                visitor.Visit(context);
+            }
+        }
     }
     
     public class AndRuleVisitor : BaseCompositeVisitor

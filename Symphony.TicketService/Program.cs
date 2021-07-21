@@ -40,6 +40,9 @@ namespace Symphony.TicketService
             
             var rideOrBusAndDriverVisitor = new OrRuleVisitor(new List<BaseVisitor> {rideVisitor, busAndDriverVisitor}); 
             visitorContext = new VisitorContext(new List<Entity> {bus, busDriver, ride});
+
+            var veryWeirdVisitor = new AndRuleVisitor(new List<BaseVisitor>
+                {busAndDriverVisitor, rideOrBusAndDriverVisitor});
             var rideOrBusAndDriverDiscount = visitorContext.Accept(rideOrBusAndDriverVisitor);
 
         }
